@@ -10,7 +10,7 @@ message("Changed Files in this PR: \n - " + changedMD)
 
 const changedJSFiles = changedFiles.filter(file => file.endsWith(".js"));
 
-message("Changed JS Files in this PR:- " + changedJSFiles)
+// message("Changed JS Files in this PR:- " + changedJSFiles)
 
 // for(let file of changedFiles) {
 //     const fileContent = fs.readFileSync(file).toString();
