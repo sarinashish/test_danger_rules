@@ -1,0 +1,23 @@
+name: 'Run Unit test'
+on:
+  pull_request:
+jobs:
+  run-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Asia/Kolkata"
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Installing dependencies
+        run: npm install --legacy-peer-deps 
+      - name: Run Jest Action
+        uses: far-eye/jest-github-action@v2.0.0
+      - name: install yarn
+        run: npm install -g yarn
+      - name: Danger
+        run: yarn danger ci
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
