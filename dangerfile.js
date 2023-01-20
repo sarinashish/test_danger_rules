@@ -110,15 +110,17 @@ function findChangedFiles() {
 }
 
 
-async function runDangerAction() {
+function runDangerAction() {
     const changedFiles = findChangedFiles();
     console.log({changedFiles});
-    // if(changedFiles.includes("dangerfile.js")) {
-    //     // There are changes detected in danger rule file
-    //     // fail status check and print error message on PR
-    //     fail("No changes should be done in dangerfile.js")
-    // } else {
-    //     // Check for other rules only if there are no changes in danger rule file
+    if(changedFiles.includes("dangerfile.js")) {
+        // There are changes detected in danger rule file
+        // fail status check and print error message on PR
+        fail("No changes should be done in dangerfile.js")
+    } else {
+        // Check for other rules only if there are no changes in danger rule file
         
-    // }  
+    }  
 }
+
+runDangerAction()
